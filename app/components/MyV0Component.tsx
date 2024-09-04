@@ -1,62 +1,76 @@
-// you can overwrite this entire file with your v0 Component.
-// just copy and paste the "React" output over the entire file.
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
-import Link from "next/link";
-import React from "react";
-import {V0Logo} from "./symbols";
+const hikingRoutes = [
+  {
+    name: "Mount Rainier Wonderland Trail",
+    location: "Mount Rainier National Park",
+    difficulty: "Difficult",
+    description: "A 93-mile loop around Mount Rainier, offering stunning views of the mountain and diverse ecosystems."
+  },
+  {
+    name: "Hoh River Trail",
+    location: "Olympic National Park",
+    difficulty: "Moderate",
+    description: "A 17.3-mile trail through the Hoh Rainforest, known for its lush green landscape and old-growth trees."
+  },
+  {
+    name: "Skyline Trail",
+    location: "Mount Rainier National Park",
+    difficulty: "Moderate",
+    description: "A 5.5-mile loop with panoramic views of Mount Rainier, wildflower meadows, and glaciers."
+  },
+  {
+    name: "Colchuck Lake Trail",
+    location: "Okanogan-Wenatchee National Forest",
+    difficulty: "Moderate",
+    description: "An 8-mile round trip hike to a stunning alpine lake in the heart of the Enchantments."
+  },
+  {
+    name: "Mount Si Trail",
+    location: "North Bend",
+    difficulty: "Moderate",
+    description: "A popular 8-mile round trip hike near Seattle, offering views of the Snoqualmie Valley and Cascade Mountains."
+  },
+  {
+    name: "Rattlesnake Ledge Trail",
+    location: "Rattlesnake Mountain Scenic Area",
+    difficulty: "Easy",
+    description: "A 4-mile round trip hike with stunning views of the Snoqualmie Valley and Rattlesnake Lake."
+  },
+  {
+    name: "Chain Lakes Loop",
+    location: "Mount Baker Wilderness",
+    difficulty: "Moderate",
+    description: "A 7.5-mile loop trail featuring alpine lakes, wildflower meadows, and views of Mount Baker and Mount Shuksan."
+  },
+  {
+    name: "Maple Pass Loop",
+    location: "North Cascades",
+    difficulty: "Moderate",
+    description: "A 7.2-mile loop offering spectacular views of Lake Ann, Rainy Lake, and the surrounding peaks."
+  }
+]
 
-function TestComponent() {
+export default function Component() {
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "100%",
-        justifyContent: "space-between",
-        flexDirection: "column",
-        width: "100%",
-      }}
-    >
-      <h3
-        style={{
-          maxWidth: "11em",
-        }}
-      >
-        This would be a pretty good place for a{" "}
-        <Link href="https://v0.dev/" target="_blank" rel="noopener noreferrer">
-          v0 component
-        </Link>
-        , wouldn't it?
-      </h3>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-end",
-          width: "100%",
-        }}
-      >
-        <p
-          style={{
-            maxWidth: "20em",
-          }}
-        >
-          Go make one, then paste it into{" "}
-          <code
-            style={{
-              fontFamily: "var(--font-geist-mono)",
-              fontWeight: 500,
-              fontSize: "0.95em",
-              fontFeatureSettings: "'ss09'",
-            }}
-          >
-            app/components/MyV0Component.tsx
-          </code>
-        </p>
-
-        <V0Logo />
+    <ScrollArea className="h-[600px] w-full rounded-md border p-4">
+      <h2 className="text-2xl font-bold mb-4">Hiking Routes in Washington State</h2>
+      <div className="grid gap-4">
+        {hikingRoutes.map((route, index) => (
+          <Card key={index}>
+            <CardHeader>
+              <CardTitle>{route.name}</CardTitle>
+              <CardDescription>{route.location}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Badge className="mb-2">{route.difficulty}</Badge>
+              <p>{route.description}</p>
+            </CardContent>
+          </Card>
+        ))}
       </div>
-    </div>
-  );
+    </ScrollArea>
+  )
 }
-
-export default TestComponent;
